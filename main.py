@@ -1,4 +1,17 @@
 #the manin file
+
+# TODO: Check if the letter is contained @Florian
+# TODO: Hide the word @Florian
+
+
+# TODO: Draw hangman @Evan
+# TODO: Import a list of words @Evan
+
+
+# TODO: Welcome (introduction) message @Gary
+# TODO: End game (conclusion) message @Gary
+
+
 import os
 clear = lambda: os.system('clear')
 
