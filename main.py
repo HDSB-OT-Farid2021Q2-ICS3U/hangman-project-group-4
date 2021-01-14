@@ -9,8 +9,11 @@ makelist = x.split('\n')
 def head():
     print ('  (o)')
 
-def body():
+def arms():
     print(' |[]|')
+
+def body():
+    print('  []')
 
 def legs():
     print('  LL')
@@ -18,6 +21,8 @@ def legs():
 print('''  |
   |
   |''')
+
+  
 head()
-body()
+arms()
 legs()
