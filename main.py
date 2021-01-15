@@ -22,6 +22,11 @@ x = (wordlist.words)
 makelist = x.split('\n')
 
 # Different parts of hangman
+def hang():
+   print('''  |
+  |
+  |''')
+
 def head():
     print ('  (o)')
 
