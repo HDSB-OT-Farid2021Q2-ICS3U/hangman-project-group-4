@@ -16,6 +16,17 @@ import os
 import wordlist
 clear = lambda: os.system('clear')
 
+# Color class
+class color():
+    defualt = "\033[39m"
+    black = "\033[30m"
+    red = "\033[31m"
+    green = "\033[32m"
+    yellow = "\033[33m"
+    blue = "\033[34m"
+    magenta = "\033[35m"
+    cyan = "\033[36m"
+
 x = (wordlist.words)
 
 # A list of words
@@ -57,26 +68,26 @@ def hideword(word, guessedlett):
     
 # welcome message
 def welcome():
-    print('Welcome to the hangman game!')
-    continueProgram = input('Press enter to continue...')
+    print(color.red + 'Welcome to the hangman game!' + color.red)
+    continueProgram = input(color.defualt + 'Press enter to continue...' + color.defualt)
     clear()
-    print('This is a single player game, so we will randomly choose a word from a list of words.')
-    continueProgram = input('Press enter to continue...')
+    print(color.blue + 'This is a single player game, so we will randomly choose a word from a list of 1000 words.' + color.blue)
+    continueProgram = input(color.defualt + 'Press enter to continue...' + color.defualt)
     clear()
-    print('Word generated! The game is ready!')
-    continueProgram = input('Press enter to start the game!')
+    print(color.magenta + 'Word generated! The game is ready!' + color.magenta)
+    continueProgram = input(color.defualt + 'Press enter to continue...' + color.defualt)
     clear()
 
 
 # end message
 def end():
     if winTheGame == True:
-        print('Congratulations! You won!')
-        continueProgram = input('Press enter to continue...')
+        print(color.blue + 'Congratulations! You won!' + color.blue)
+        continueProgram = input(color.defualt+ 'Press enter to exit the game...' + color.defualt)
         clear()
     else:
-        print('Sorry, you lost!')
-        continueProgram = input('Press enter to continue...')
+        print(color.red+ 'Sorry, you lost!' + color.red)
+        continueProgram = input(color.defualt+ 'Press enter to exit the game...' + color.defualt)
         clear()
-    print('The game is finished!')
+    print(color.yellow + 'The game is finished!' + color.yellow)
 
