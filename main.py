@@ -12,16 +12,17 @@ def hideword(word, guessedlett):
     print(''.join(lisofwords))
 
     
-    def lives(lives)
-    if lives == 1
+ def lives(lives) :
+
+    if lives == 1:
         print("  ____   ")
         print(" |    |  ")
         print(" |       ")
         print(" |       ")
         print(" |       ")
         print("_|___    ")
-        
-    elif lives == 2
+
+    elif lives == 2:
         print("  ____   ")
         print(" |    |  ")
         print(" |    O  ")
@@ -29,7 +30,7 @@ def hideword(word, guessedlett):
         print(" |       ")
         print("_|___    ")
 
-    elif lives == 3
+    elif lives == 3:
         print("  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
@@ -37,7 +38,7 @@ def hideword(word, guessedlett):
         print(" |       ")
         print("_|___    ")
 
-    elif lives == 4
+    elif lives == 4:
         print("  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
@@ -45,7 +46,7 @@ def hideword(word, guessedlett):
         print(" |       ")
         print("_|___    ")
 
-    elif lives == 5
+    elif lives == 5:
         print("  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
@@ -53,10 +54,13 @@ def hideword(word, guessedlett):
         print(" |   /   ")
         print("_|___    ")
 
-    elif lives == 6
+    elif lives == 6:
         print("  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
         print(" |    |  ")
         print(" |   / \ ")
         print("_|___    ")
+
+while True:
+    lives(int(input('lives? ')))
