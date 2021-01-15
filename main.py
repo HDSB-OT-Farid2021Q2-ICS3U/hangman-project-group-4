@@ -19,5 +19,5 @@ def hideword(word, guessedlett):
             lisofwords.append('_')
 
 
-    print(','.join(lisofwords))
+    print(' '.join(lisofwords))
 
