@@ -13,7 +13,26 @@
 
 
 import os
+import wordlist
 clear = lambda: os.system('clear')
+
+x = (wordlist.words)
+
+# A list of words
+makelist = x.split('\n')
+
+# Different parts of hangman
+def head():
+    print ('  (o)')
+
+def arms():
+    print(' |[]|')
+
+def body():
+    print('  []')
+
+def legs():
+    print('  LL')
 
 
 # Hideword function
