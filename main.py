@@ -16,6 +16,21 @@ import os
 clear = lambda: os.system('clear')
 
 
+# Hideword function
+def hideword(word, guessedlett):
+    lisofwords = []
+    guessedlet = [' ']
+    sep = ''
+    guessedlet.extend(guessedlett)
+    for i in word:
+
+        if i in guessedlet :
+            lisofwords.append(i)
+        else :
+            lisofwords.append('_')
+    print(''.join(lisofwords))
+    
+    
 # welcome message
 def welcome():
     print('Welcome to the hangman game!')
