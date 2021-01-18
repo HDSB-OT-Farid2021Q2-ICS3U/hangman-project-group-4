@@ -48,7 +48,7 @@ def hidetheword(word, guessedlett):
     
     lisofwords = []
     guessedlet = [' ']
-    sep = ''
+    sep = ' '
     guessedlet.extend(guessedlett)
     for i in word:
 
