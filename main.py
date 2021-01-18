@@ -53,11 +53,11 @@ def welcome():
 def end(condition):
     if condition == True:
         print(color.strBlue + 'Congratulations! You won!')
-        condition = input(color.strDefualt+ 'Press enter to exit the game...')
+        condition = input(color.strDefualt+ 'Press enter to continue...')
         clear()
     else:
         print(color.strRed + 'Sorry, you lost!')
-        condition = input(color.strDefualt + 'Press enter to exit the game...')
+        condition = input(color.strDefualt + 'Press enter to continue...')
         clear()
 
     print(color.strYellow + 'The game is finished!')
@@ -197,12 +197,19 @@ def start():
         #lose condition
         if intLives > 6 :
             end(False)
-            print(f'The correct word is: {strHideWord}')
+            reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
+            if reviewGame == 'Y':
+                print(f'The correct word is: {strHideWord}')
+                print('You guessed: ' + ', '.join(lisLetter))
             break
         #win condition if all guessed
         win = [i for i in hidetheword(strHideWord,lisLetter)] 
         if '_' not in win :
             end(True)
+            reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
+            if reviewGame == 'Y':
+                print(f'The correct word is: {strHideWord}')
+                print('You guessed: ' + ', '.join(lisLetter))
             break
 
 
