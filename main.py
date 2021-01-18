@@ -1,3 +1,9 @@
+# Author: Gary, Florian, Evan
+# File name: main.py
+# What it does: It is a hangman game that a single user can play. 
+# Date programmed: 2021-1-15 (start)
+# 2021-1-18 (rough work finished)
+
 import os
 import time
 import wordlist
@@ -7,7 +13,7 @@ clear = lambda: os.system('cls')
 word = (wordlist.words)
 makelist = word.split('\n')
 
-    # Color class
+# Color class
 class color():
     defualt = "\033[39m"
     black = "\033[30m"
@@ -18,8 +24,13 @@ class color():
     magenta = "\033[35m"
     cyan = "\033[36m"
 
+# Input: This function does not take any argument.
+# Return Value: none  
+# What It Does: It prints the welcome message at the very start of the 
+# program. It prints a sentence each time and asks the user to press enter 
+# once they finish reading the line and want to proceed. 
+# Limits: none
 def welcome():
-
     print(color.red + 'Welcome to the hangman game!')
     input(color.defualt + 'Press enter to continue...')
     clear()
@@ -31,7 +42,14 @@ def welcome():
     time.sleep(1)
     clear()
 
-# end message
+# Input: This function takes a boolean, "condition", as an argument.
+# If condition == True, then it will proceed as you won the game.
+# Else, it will proceed as you lost the game.
+# Return Value: none
+# What It Does: It prints the end message at the end of the 
+# program. It prints a sentence each time and asks the user to press enter 
+# once they finish reading the line and want to proceed. 
+# Limits: none
 def end(condition):
     if condition == True:
         print(color.blue + 'Congratulations! You won!')
@@ -44,6 +62,17 @@ def end(condition):
 
     print(color.yellow + 'The game is finished!')
     
+
+# Input: This function takes two string arguments, word and guessedlett.
+# The word is the word that the user needs to guess. The guessedlett is a 
+# collection of letters the user has gussed.
+# Return Value: It returns the letter that the user needs to guess, 
+# but for every word that the user did not successfully guessed, 
+# it will hide that letter by printing an underscore instead.
+# What it does: The function prints the letter that the user needs to guess, 
+# but for every word that the user did not successfully guessed, 
+# it will hide that letter by printing an underscore instead.
+# Limits: none  
 def hidetheword(word, guessedlett):
     
     lisofwords = []
@@ -58,6 +87,12 @@ def hidetheword(word, guessedlett):
     x = (' '.join(lisofwords))
     return x
 
+
+# Input: This function takes a int input, lives.
+# Return Value: none
+# What it does: It outputs the hangman, 
+# according to the live the hangman has left.
+# Limits: lives variable can only be integers from 1 to 6 (inclusive).
 def hp(lives) :
 
     if lives == 1:
@@ -108,9 +143,16 @@ def hp(lives) :
         print(" |   / \ ")
         print("_|___    ")
 
+
+# Input: none
+# Return value: none
+# What it does: It prints the welcome message, 
+# randomly choose a word from the wordlist, 
+# and prints the word that hides letters the user did not guess.
+# Limit: none
 def start():
 
-    #welcome()
+    welcome()
     guessed = []
     letter = []
     lives = 0
@@ -154,5 +196,3 @@ def start():
 
 
 start()
-
-
