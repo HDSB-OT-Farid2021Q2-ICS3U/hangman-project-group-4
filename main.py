@@ -10,9 +10,16 @@ import wordlist
 import random
 
 
-# Clear function
-clear = lambda: os.system('clear')
-
+# Clear screen for different OS
+print('What is your Operating System?')
+print('1. Windows')
+print('2. Mac')
+print('3. Linux')
+userOS = input('My Operating System is: ')
+if userOS == '2':
+    clear = lambda: os.system('clear')
+else:
+    clear = lambda: os.system('cls')
 
 # Make a list of words to randomly choose from.
 strWord = (wordlist.words) 
