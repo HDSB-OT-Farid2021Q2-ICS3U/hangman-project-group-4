@@ -9,9 +9,14 @@ import time
 import wordlist
 import random
 
+
+# Clear function
 clear = lambda: os.system('clear')
+
+
+# Make a list of words to randomly choose from.
 strWord = (wordlist.words) 
-listWord = strWord.split('\n') # The list of words to randomly choose from
+listWord = strWord.split('\n') 
 
 # Color class. It is used to print colored texts.
 class color():
@@ -24,13 +29,11 @@ class color():
     strMagenta = "\033[35m"
     strCyan = "\033[36m"
 
-# Input: This function does not take any argument.
+# Input: none
 # Return Value: none  
-# What It Does: It prints the welcome message at the very start of the 
-# program. It prints a sentence each time and asks the user to press enter 
-# once they finish reading the line and want to proceed. 
 # Limits: none
 def welcome():
+    """It prints the welcome message"""
     print(color.strBlue + 'Welcome to the hangman game!')
     input(color.strDefualt + 'Press enter to continue...')
     clear()
@@ -42,15 +45,15 @@ def welcome():
     time.sleep(1)
     clear()
 
-# Input: This function takes a boolean, "condition", as an argument.
+
+# Input: A boolean, "condition", as an argument.
 # If condition == True, then it will proceed as you won the game.
 # Else, it will proceed as you lost the game.
 # Return Value: none
-# What It Does: It prints the end message at the end of the 
-# program. It prints a sentence each time and asks the user to press enter 
-# once they finish reading the line and want to proceed. 
 # Limits: none
 def end(condition):
+    """It prints the end-game message, according 
+    to whether the user won the game or not."""
     if condition == True:
         print(color.strBlue + 'Congratulations! You won!')
         condition = input(color.strDefualt+ 'Press enter to continue...')
@@ -63,18 +66,17 @@ def end(condition):
     print(color.strYellow + 'The game is finished!')
     
 
-# Input: This function takes two string arguments, word and guessedlett.
+# Input: Two string arguments, word and guessedlett.
 # The word is the word that the user needs to guess. The guessedlett is a 
-# collection of letters the user has gussed.
+# list of letters the user has gussed.
 # Return Value: It returns the letter that the user needs to guess, 
-# but for every word that the user did not successfully guessed, 
-# it will hide that letter by printing an underscore instead.
-# What it does: The function prints the letter that the user needs to guess, 
 # but for every word that the user did not successfully guessed, 
 # it will hide that letter by printing an underscore instead.
 # Limits: none  
 def hidetheword(word, guessedlett):
-    
+    """The function prints the letter that the user needs to guess, 
+    but for every word that the user did not successfully guessed, 
+    it will hide that letter by printing an underscore instead."""
     lisOfWords = []
     guessedlet = [' ']
     guessedlet.extend(guessedlett)
@@ -88,13 +90,12 @@ def hidetheword(word, guessedlett):
     return x
 
 
-# Input: This function takes a int input, lives.
+# Input: A integer input, lives.
 # Return Value: none
-# What it does: It outputs the hangman, 
-# according to the live the hangman has left.
-# Limits: lives variable can only be integers from 1 to 6 (inclusive).
-def hp(intLives) :
-
+# Limits: Lives variable can only be integers from 0 to 6 (inclusive).
+def hp(intLives):
+    """It outputs the hangman according 
+    to the live the hangman has left."""
     if intLives == 0:
         print(color.strDefualt + "  ____   ")
         print(" |       ")
@@ -138,7 +139,7 @@ def hp(intLives) :
     elif intLives == 5:
         print(color.strDefualt + "  ____   ")
         print(" |    |  ")
-        print(" |   _O_ ")
+        print(" |   _0_ ")
         print(" |    |  ")
         print(" |   /   ")
         print("_|___    ")
@@ -154,14 +155,15 @@ def hp(intLives) :
 
 # Input: none
 # Return value: none
-# What it does: It runs the program. It prints the welcome message, 
-# randomly chooses a word from the wordlist, 
-# prints the hangman drawing, 
-# prints the word that hides letters the user did not guess, 
-# prints the list of letters the user guessed.
 # Limit: none
 def start():
+    """The main part of the program. It prints the welcome message, 
+    randomly chooses a word from the wordlist, 
+    prints the hangman drawing, prints the word that hides letters 
+    the user did not guess, 
+    prints the list of letters the user guessed."""
 
+    # Set up variables and start
     welcome()
     lisGuessed = []
     lisLetter = []
@@ -172,39 +174,41 @@ def start():
     clear()
     hidetheword(strHideWord,' ')
 
-    while True : 
+    # The body part. It repeats until the game is finished. 
+    while True: 
+
+        # It prints the hangman, displays the hidden word, 
+        # and asks the user to input a letter.
         hp(intLives)
         print(hidetheword(strHideWord,lisLetter))
-        # print(strHideWord)
         print(f'The list of letters you guessed: {lisLetter}')
-
         strImp = input(color.strBlue + 'Input a letter you would guess: ')
-
         lisGuessed = [x for x in strImp]
 
+        # Counts wrong answers and updates hangman's lives
         for i in lisGuessed: #check if is not enter
             if i != '': # if not empty character 
                 for p in lisGuessed:
                     if p not in lisLetter:  # not a character thats already been picked
                         lisLetter.append(i)
-                        intLives += sum([1 for o in lisGuessed if o not in strHideWord]) #count wrong answers and addes lives
+                        intLives += sum([1 for o in lisGuessed if o not in strHideWord]) 
         
+        # Clear the screen at the end of each iteration.
         clear()
-        hp(intLives)
-        time.sleep(.5)
-        clear()
-
-        #lose condition
-        if intLives > 6 :
+        
+        # If all hangman lives are lost,tell the user he lost and ask whether he wants to review the game.
+        if intLives > 6:
             end(False)
             reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
             if reviewGame == 'Y':
                 print(f'The correct word is: {strHideWord}')
                 print('You guessed: ' + ', '.join(lisLetter))
             break
-        #win condition if all guessed
+
+
+        # If all letters are guessed, tell the user he won and ask whether he wants to review the game.
         win = [i for i in hidetheword(strHideWord,lisLetter)] 
-        if '_' not in win :
+        if '_' not in win:
             end(True)
             reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
             if reviewGame == 'Y':
@@ -212,5 +216,5 @@ def start():
                 print('You guessed: ' + ', '.join(lisLetter))
             break
 
-
+# Run the start function
 start()
