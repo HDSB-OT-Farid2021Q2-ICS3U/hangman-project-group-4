@@ -173,7 +173,7 @@ def start():
         guessed = [x for x in imp]
 
         for i in guessed: #check if is not enter
-            if i != '':
+            if i != '': # if not empty character 
                 for p in guessed:
                     if p not in letter:  # not a character thats already been picked
                         letter.append(i)
