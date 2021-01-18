@@ -1,3 +1,5 @@
+#This is the word list. It contains all of the words main.py will randomly choose from for the hangman game. 
+#It is currently a string type, but will be converted to a list later in main.py
 words = ('''a
 ability
 able
