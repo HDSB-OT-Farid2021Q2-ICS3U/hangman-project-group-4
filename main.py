@@ -48,7 +48,6 @@ def hidetheword(word, guessedlett):
     
     lisofwords = []
     guessedlet = [' ']
-    sep = ' '
     guessedlet.extend(guessedlett)
     for i in word:
 
@@ -56,7 +55,7 @@ def hidetheword(word, guessedlett):
             lisofwords.append(i)
         else :
             lisofwords.append('_')
-    x = (''.join(lisofwords))
+    x = (' '.join(lisofwords))
     return x
 
 def hp(lives) :
