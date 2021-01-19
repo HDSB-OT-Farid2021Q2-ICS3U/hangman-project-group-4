@@ -115,7 +115,7 @@ def hp(intLives):
     elif intLives == 3:
         print(color.strDefualt + "  ____   ")
         print(" |    |  ")
-        print(" |   _O_ ")
+        print(" |   _O  ")
         print(" |       ")
         print(" |       ")
         print("_|___    ")
@@ -124,19 +124,27 @@ def hp(intLives):
         print(color.strDefualt + "  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
-        print(" |    |  ")
+        print(" |       ")
         print(" |       ")
         print("_|___    ")
 
     elif intLives == 5:
         print(color.strDefualt + "  ____   ")
         print(" |    |  ")
-        print(" |   _0_ ")
+        print(" |   _O_ ")
+        print(" |    |  ")
+        print(" |       ")
+        print("_|___    ")
+
+    elif intLives == 6:
+        print(color.strDefualt + "  ____   ")
+        print(" |    |  ")
+        print(" |   _O_ ")
         print(" |    |  ")
         print(" |   /   ")
         print("_|___    ")
 
-    elif intLives == 6:
+    elif intLives == 7:
         print(color.strDefualt + "  ____   ")
         print(" |    |  ")
         print(" |   _O_ ")
@@ -212,12 +220,14 @@ while True:
 
         # If all hangman lives are lost,tell the user he lost and ask whether he wants to review the game.
         if intLives > 6:
+            hp(7)
             end(False)
             print(color.strDefualt + 'Would you like to review the game?')
             print('1. Yes! I would like to know the word!')
             print('2. No. Knowing that I lost is painful enough for me.')
             reviewGame = input('Enter a number: ')
             if reviewGame == '1':
+                clear()
                 print(f'The correct word is: {strHideWord}')
                 time.sleep(1)
                 print('You guessed: ' + ', '.join(lisLetter))
@@ -234,6 +244,7 @@ while True:
             print('2. No. Knowing that I won is enough.')
             reviewGame = input('Enter a number: ')
             if reviewGame == 'Y':
+                clear()
                 print(f'The correct word is: {strHideWord}')
                 time.sleep(1)
                 print('You guessed: ' + ', '.join(lisLetter))
