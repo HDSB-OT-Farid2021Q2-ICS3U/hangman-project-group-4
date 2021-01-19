@@ -35,7 +35,6 @@ def welcome():
     clear()
     print(color.strBlue + 'Word generated! The game is ready!')
     input(color.strDefualt + 'Press enter to continue...')
-    time.sleep(1)
     clear()
 
 
@@ -147,71 +146,110 @@ def hp(intLives):
 
 
 # Clear screen for different OS
+print('Before playing the game, you need to answer this question:')
 print('What is your Operating System?')
 print('1. Windows')
 print('2. Mac')
 print('3. Linux')
-userOS = input('My Operating System is: ')
-if userOS == '2':
+userOS = input('My Operating System is (enter a number): ')
+if userOS == '1':
+    clear = lambda: os.system('cls')
+    print('Your OS is Windows.')
+elif userOS == '2':
     clear = lambda: os.system('clear')
+    print('Your OS is Mac.')
 else:
     clear = lambda: os.system('cls')
-
-
-# Prints the welcome message, set up variables and start
-welcome()
-strWord = (wordlist.words) 
-listWord = strWord.split('\n') 
-lisGuessed = []
-lisLetter = []
-intLives = 0
-strHideWord = listWord[(random.randint(0, 1000))]
-print(color.strBlue + 'starting')
-time.sleep(.25)
+    print('Your OS is Linux.')
+time.sleep(.5)
 clear()
-hidetheword(strHideWord,' ')
 
 
-# The body part. It repeats until the game is finished. 
-while True: 
-
-    # It prints the hangman, displays the hidden word, 
-    # and asks the user to input a letter.
-    hp(intLives)
-    print(hidetheword(strHideWord,lisLetter))
-    print(f'The list of letters you guessed: {lisLetter}')
-    strImp = input(color.strBlue + 'Input a letter you would guess: ')
-    lisGuessed = [x for x in strImp]
-
-    # Counts wrong answers and updates hangman's lives
-    for i in lisGuessed: #check if is not enter
-        if i != '': # if not empty character 
-            for p in lisGuessed:
-                if p not in lisLetter:  # not a character thats already been picked
-                    lisLetter.append(i)
-                    intLives += sum([1 for o in lisGuessed if o not in strHideWord]) 
+# Prints the welcome message
+welcome()
 
 
-    # Clear the screen at the end of each iteration.
+# Loops the game as long as the user wants to play.
+while True:
+
+
+    # Set up variables and start
+    strWord = (wordlist.words) 
+    listWord = strWord.split('\n') 
+    lisGuessed = []
+    lisLetter = []
+    intLives = 0
+    strHideWord = listWord[(random.randint(0, 1000))]
+    print(color.strBlue + 'starting')
+    time.sleep(.25)
     clear()
-            
+    hidetheword(strHideWord,' ')
 
-    # If all hangman lives are lost,tell the user he lost and ask whether he wants to review the game.
-    if intLives > 6:
-        end(False)
-        reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
-        if reviewGame == 'Y':
-            print(f'The correct word is: {strHideWord}')
-            print('You guessed: ' + ', '.join(lisLetter))
+
+    # The body part. It repeats until the current game is finished. 
+    while True: 
+
+        # It prints the hangman, displays the hidden word, 
+        # and asks the user to input a letter.
+        hp(intLives)
+        print(hidetheword(strHideWord,lisLetter))
+        print(f'The list of letters you guessed: {lisLetter}')
+        strImp = input(color.strBlue + 'Input a letter you would guess: ')
+        lisGuessed = [x for x in strImp]
+
+        # Counts wrong answers and updates hangman's lives
+        for i in lisGuessed: #check if is not enter
+            if i != '': # if not empty character 
+                for p in lisGuessed:
+                    if p not in lisLetter:  # not a character thats already been picked
+                        lisLetter.append(i)
+                        intLives += sum([1 for o in lisGuessed if o not in strHideWord]) 
+
+
+        # Clear the screen at the end of each iteration.
+        clear()
+                
+
+        # If all hangman lives are lost,tell the user he lost and ask whether he wants to review the game.
+        if intLives > 6:
+            end(False)
+            print(color.strDefualt + 'Would you like to review the game?')
+            print('1. Yes! I would like to know the word!')
+            print('2. No. Knowing that I lost is painful enough for me.')
+            reviewGame = input('Enter a number: ')
+            if reviewGame == '1':
+                print(f'The correct word is: {strHideWord}')
+                time.sleep(1)
+                print('You guessed: ' + ', '.join(lisLetter))
+                print('')
+            break
+
+
+        # If all letters are guessed, tell the user he won and ask whether he wants to review the game.
+        win = [i for i in hidetheword(strHideWord,lisLetter)] 
+        if '_' not in win:
+            end(True)
+            print(color.strDefualt + 'Would you like to review the game?')
+            print('1. Yes! I would like to see my guesses!')
+            print('2. No. Knowing that I won is enough.')
+            reviewGame = input('Enter a number: ')
+            if reviewGame == 'Y':
+                print(f'The correct word is: {strHideWord}')
+                time.sleep(1)
+                print('You guessed: ' + ', '.join(lisLetter))
+                print('')
+            break
+
+
+    # Ask the user whether he wants to play again 
+    print('Would you like to play again?')
+    print('1. Yes, I would like to play again!')
+    print('2. No, End the program!')
+    if input('Enter a number: ') == '2':
+        clear()
+        print('The program has ended!')
         break
-
-
-    # If all letters are guessed, tell the user he won and ask whether he wants to review the game.
-    win = [i for i in hidetheword(strHideWord,lisLetter)] 
-    if '_' not in win:
-        end(True)
-        reviewGame = input(color.strDefualt + 'Would you like to review the game?(Y/N):\n')
-        if reviewGame == 'Y':
-            print(f'The correct word is: {strHideWord}')
-            print('You guessed: ' + ', '.join(lisLetter))
-        break
+    else:
+        print('You chose to play the game again!')
+        time.sleep(1)
+        clear()
