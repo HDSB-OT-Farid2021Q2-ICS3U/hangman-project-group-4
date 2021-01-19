@@ -34,7 +34,7 @@ If the letter you guessed is not contained, then you will be informed that you m
 will lose one live. After seven incorrect attempts, the hangman will lose all its lives and the game is lost. If you guessed
 the entire word before the hangman lost all his lives, you win the game.
 
-# Harware Requirement
+# Hardware Requirement
 
 A functioning computer with a keyboard and a mouse is necessary. 
 
