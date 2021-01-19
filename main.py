@@ -89,68 +89,29 @@ def hp(intLives):
     """It outputs the hangman according 
     to the live the hangman has left."""
     if intLives == 0:
-        print(color.strDefualt + "  ____   ")
-        print(" |       ")
-        print(" |       ")
-        print(" |       ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |       \n |       \n |       \n |       \n_|___    ")
 
     elif intLives == 1:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |       ")
-        print(" |       ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    |  \n |       \n |       \n |       \n_|___    ")
 
     elif intLives == 2:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |    O  ")
-        print(" |       ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    |  \n |    O  \n |       \n |       \n_|___    ")
 
     elif intLives == 3:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |   _O  ")
-        print(" |       ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    |  \n |   _O  \n |       \n |       \n_|___    ")
 
     elif intLives == 4:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |   _O_ ")
-        print(" |       ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    |  \n |   _O_ \n |       \n |       \n_|___    ")
 
     elif intLives == 5:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |   _O_ ")
-        print(" |    |  ")
-        print(" |       ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    |  \n |   _O_ \n |    |  \n |       \n_|___    ")
 
     elif intLives == 6:
-        print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |   _O_ ")
-        print(" |    |  ")
-        print(" |   /   ")
-        print("_|___    ")
+        print(color.strDefualt + "  ____   \n |    | \n |   _O_ \n |    |  \n |   /   \n_|___    ")
 
     elif intLives == 7:
         print(color.strDefualt + "  ____   ")
-        print(" |    |  ")
-        print(" |   _O_ ")
-        print(" |    |  ")
-        print(" |   / \ ")
-        print("_|___    ")
+        print(" |    |  \n |   _O_ \n |    |  \n |   / \ _|___    ")
 
 
 # Clear screen for different OS
