@@ -69,16 +69,16 @@ def hidetheword(word, guessedlett):
     """The function prints the letter that the user needs to guess, 
     but for every word that the user did not successfully guessed, 
     it will hide that letter by printing an underscore instead."""
-    lisOfWords = []
-    guessedlet = [' ']
+    lisOfWords = []  # The word the user is trying to guess
+    guessedlet = [' '] # A list of letters the user guessed
     guessedlet.extend(guessedlett)
     for i in word:
-
         if i in guessedlet :
             lisOfWords.append(i)
         else :
             lisOfWords.append('_')
-    x = (' '.join(lisOfWords))
+    # The formatted word the user is trying to guess
+    x = (' '.join(lisOfWords)) 
     return x
 
 
@@ -111,7 +111,7 @@ def hp(intLives):
 
     elif intLives == 7:
         print(color.strDefualt + "  ____   ")
-        print(" |    |  \n |   _O_ \n |    |  \n |   / \ _|___    ")
+        print(" |    |  \n |   _O_ \n |    |  \n |   / \ \n_|___    ")
 
 
 # Clear screen for different OS
@@ -120,7 +120,7 @@ print('What is your Operating System?')
 print('1. Windows')
 print('2. Mac')
 print('3. Linux')
-userOS = input('My Operating System is (enter a number): ')
+userOS = input('My Operating System is (enter a number): ') 
 if userOS == '1':
     clear = lambda: os.system('cls')
     print('Your OS is Windows.')
@@ -145,10 +145,11 @@ while True:
     # Set up variables and start
     strWord = (wordlist.words) 
     listWord = strWord.split('\n') 
-    lisGuessed = []
-    lisLetter = []
-    intLives = 0
-    strHideWord = listWord[(random.randint(0, 1000))]
+    lisGuessed = [] # The current letter the user guessed 
+    lisLetter = [] # The list of letters the user guessed
+    intLives = 0 # Lives of hangman
+    # The word the user needs to guess
+    strHideWord = listWord[(random.randint(0, 1000))]  
     print(color.strBlue + 'starting')
     time.sleep(.25)
     clear()
@@ -179,7 +180,8 @@ while True:
         clear()
                 
 
-        # If all hangman lives are lost,tell the user he lost and ask whether he wants to review the game.
+        # If all hangman lives are lost,tell the user 
+        # he lost and ask whether he wants to review the game.
         if intLives > 6:
             hp(7)
             end(False)
