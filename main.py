@@ -231,7 +231,7 @@ while True:
                 print(f'The correct word is: {strHideWord}')
                 time.sleep(1)
                 print('You guessed: ' + ', '.join(lisLetter))
-                print('')
+            print('')
             break
 
 
@@ -243,12 +243,12 @@ while True:
             print('1. Yes! I would like to see my guesses!')
             print('2. No. Knowing that I won is enough.')
             reviewGame = input('Enter a number: ')
-            if reviewGame == 'Y':
+            if reviewGame == '1':
                 clear()
                 print(f'The correct word is: {strHideWord}')
                 time.sleep(1)
                 print('You guessed: ' + ', '.join(lisLetter))
-                print('')
+            print('')
             break
 
 
