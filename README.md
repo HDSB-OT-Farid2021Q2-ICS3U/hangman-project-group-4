@@ -8,22 +8,28 @@ Although this product can work on most computers, it is recommended that you che
 
 Make sure that your computer can run Python files. If you don't know how to do so, read the "Software Requirement and Guide" section. 
 
-Download the github repository. You will need the main.py and wordlist.py files. Put those files 
-on your editor, and run the main.py file. 
+Download the github repository. You will need the main.py and wordlist.py files. Run the main.py file. 
 
-Once you run the main.py file, the game starts. First, it will display a series of introduction messages. Once you finish reading
+Once you run the main.py file, the game starts. First, it will ask your OS (Windows, Mac or Linux). Choose your OS accordingly. 
+
+Then, it will display a series of introduction messages. Once you finish reading
 what is displayed on the terminal, press enter the continue. 
 
-At the top, the program shows you the hangman drawing (the hangman drawing will only be visible after you guessed at least one word).
-The program will display the word, with each letter you have not guessed replaced by "_". The next line displays a list of all 
-letters you have guessed, regardless of whether your guess is correct or not. Lastly, it will ask you to input another letter you want 
-to guess. Press enter once you finish inputting the letter. 
+At the top, the program shows you the hangman drawing. The program will display the word, with each letter you have not 
+guessed replaced by "_". The next line displays a list of all letters you have guessed, regardless of whether your guess 
+is correct or not. Lastly, it will ask you to input another letter you want to guess. Press enter once you finish inputting the letter. 
 
 The hangman drawing will be updated each time you incorrectly input a letter. The word will display the letter 
-you just guessed if you guessed correctly. The list of letters you guessed will be updated every time. 
+you just guessed if you guessed correctly. The list of letters you guessed will be updated every time you input a new letter. 
 
 If you guessed all letters before the hangman drawing is finished, the program will proceed to end the game.
 The game will also end if all hangman lives are lost. 
+
+Once the current game is finished, you may choose to review the game. By reviewing the game, you will see the correct answer, and your
+guess attempts. 
+
+Then, it will ask you whether you want to play it again. If you choose to play again, the program will run again, 
+except the select OS part and the welcome message part. If you choose to exit the game, the program will end. 
 
 # Game Rule
 
@@ -40,8 +46,10 @@ A functioning computer with a keyboard and a mouse is necessary.
 
 # Software Requirement and Guide
 
-This game is coded using Python. You will need an editor and a compiler that can compile Python files. Repl or VS Code are recommended.
+This game is coded using Python. You will need to download Python 3 to run this game. You can download it at 
+https://www.python.org/downloads/
 
 # Questions and Concerns
 
-If you have any questions or concerns about how to play the game, feel free to contact us. 
+If you have any questions or concerns about how to play the game, feel free to contact us. Our telephone number is (+1) 400-374-1379.
+Our company's email address is contact@pgs.com.
