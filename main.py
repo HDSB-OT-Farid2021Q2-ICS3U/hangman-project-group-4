@@ -30,10 +30,11 @@ def welcome():
     print(color.strBlue + 'Welcome to the hangman game!')
     input(color.strDefualt + 'Press enter to continue...')
     clear()
-    print(color.strBlue + 'This is a single player game, so we will randomly choose a word from a list of 1000 words.')
+    print(color.strBlue + 'This game is developed by', end = ' ')
+    print(color.strBlue + 'the Professional Gamer Studio.')
     input(color.strDefualt + 'Press enter to continue...')
     clear()
-    print(color.strBlue + 'Word generated! The game is ready!')
+    print(color.strBlue + 'The game is ready! Have fun!')
     input(color.strDefualt + 'Press enter to continue...')
     clear()
 
@@ -47,7 +48,7 @@ def end(condition):
     """It prints the end-game message, according 
     to whether the user won the game or not."""
     if condition == True:
-        print(color.strBlue + 'Congratulations! You won!')
+        print(color.strGreen + 'Congratulations! You won!')
         condition = input(color.strDefualt+ 'Press enter to continue...')
         clear()
     else:
@@ -58,12 +59,9 @@ def end(condition):
     print(color.strYellow + 'The game is finished!')
     
 
-# Input: Two string arguments, word and guessedlett.
-# The word is the word that the user needs to guess. The guessedlett is a 
-# list of letters the user has gussed.
-# Return Value: It returns the letter that the user needs to guess, 
-# but for every word that the user did not successfully guessed, 
-# it will hide that letter by printing an underscore instead.
+# Input: Two string arguments. Word is the word that the user needs to guess. 
+# Guessedlett is a list of letters the user has gussed.
+# Return Value: The formatted word that the user can see.
 # Limits: none  
 def hidetheword(word, guessedlett):
     """The function prints the letter that the user needs to guess, 
@@ -84,7 +82,7 @@ def hidetheword(word, guessedlett):
 
 # Input: A integer input, lives.
 # Return Value: none
-# Limits: Lives variable can only be integers from 0 to 6 (inclusive).
+# Limits: Lives variable can only be integers from 0 to 7 (inclusive).
 def hp(intLives):
     """It outputs the hangman according 
     to the live the hangman has left."""
@@ -115,7 +113,7 @@ def hp(intLives):
 
 
 # Clear screen for different OS
-print('Before playing the game, you need to answer this question:')
+print('Before playing the game, you need to answer these questions:')
 print('What is your Operating System?')
 print('1. Windows')
 print('2. Mac')
@@ -130,7 +128,21 @@ elif userOS == '2':
 else:
     clear = lambda: os.system('cls')
     print('Your OS is Linux.')
-time.sleep(.5)
+time.sleep(2)
+clear()
+print('What mode are you choosing?')
+print('1. Single-player')
+print('2. Two-player')
+gameMode = input('I want to play in (enter a number): ')
+clear()
+if gameMode == '1':
+    print(color.strBlue + 'You chose the single-player mode.')
+    print('The computer will generate a word for you.')
+else:
+    print(color.strBlue + 'You chose the two-player mode.')
+    print('One of the players will input a word.')
+    print('The other player will guess the word.')
+input(color.strDefualt + 'Press Enter to continue...')
 clear()
 
 
@@ -142,15 +154,29 @@ welcome()
 while True:
 
 
-    # Set up variables and start
+    # Set up variables 
     strWord = (wordlist.words) 
-    listWord = strWord.split('\n') 
+    listWord = strWord.split('\n') # A list of possible words 
     lisGuessed = [] # The current letter the user guessed 
     lisLetter = [] # The list of letters the user guessed
     intLives = 0 # Lives of hangman
-    # The word the user needs to guess
-    strHideWord = listWord[(random.randint(0, 1000))]  
-    print(color.strBlue + 'starting')
+
+
+    # Randomly choose a word the user in single-player mode.
+    # Allows the user to enter a word for two-player mdoe.
+    if gameMode == '1':
+        strHideWord = listWord[(random.randint(0, 1000))]
+    else:
+        while True:
+            strHideWord = input('Please enter a word for the other user to guess:\n')
+            print(f'You have entered {strHideWord}. Confirm?')
+            print('1. Yes. This is the word!')
+            print('2. No. I want to reenter my word!')
+            if input('Enter a nummber: ') == '1':
+                break
+            
+
+    print(color.strBlue + 'Starting')
     time.sleep(.25)
     clear()
     hidetheword(strHideWord,' ')
@@ -167,16 +193,23 @@ while True:
         strImp = input(color.strBlue + 'Input a letter you would guess: ')
         lisGuessed = [x for x in strImp]
 
-        # Counts wrong answers and updates hangman's lives
+        # Counts wrong answers, outputs if the guess is correct,
+        # and updates hangman's lives
         for i in lisGuessed: #check if is not enter
             if i != '': # if not empty character 
                 for p in lisGuessed:
                     if p not in lisLetter:  # not a character thats already been picked
                         lisLetter.append(i)
+                        if strImp in strHideWord:
+                            print(color.strGreen + 'Correct guess!' + color.strGreen)
+                            time.sleep(1)
+                        else:
+                            print(color.strRed + 'Incorrect guess!' + color.strRed)
+                            time.sleep(1)
                         intLives += sum([1 for o in lisGuessed if o not in strHideWord]) 
 
 
-        # Clear the screen at the end of each iteration.
+        # Clear the screen at the end of each guess.
         clear()
                 
 
@@ -198,7 +231,8 @@ while True:
             break
 
 
-        # If all letters are guessed, tell the user he won and ask whether he wants to review the game.
+        # If all letters are guessed, tell the user he 
+        # won and ask whether he wants to review this current game.
         win = [i for i in hidetheword(strHideWord,lisLetter)] 
         if '_' not in win:
             end(True)
