@@ -1,6 +1,6 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=350249&assignment_repo_type=GroupAssignmentRepo)
 
-# Gaming Instructions
+# Before You Play
 
 This is an online hangman game. If you are not familiar with the game rule, read the "Game Rule" section below.
 
@@ -9,6 +9,8 @@ Although this product can work on most computers, it is recommended that you che
 Make sure that your computer can run Python files. If you don't know how to do so, read the "Software Requirement and Guide" section. 
 
 Download the github repository. You will need the main.py and wordlist.py files. Run the main.py file. 
+
+# Gaming Instructions
 
 Once you run the main.py file, the game starts. First, it will ask your OS (Windows, Mac or Linux). Choose your OS accordingly. It will 
 also ask for the game mode. If you choose single-player mode, the computer will randomly generate a word from the word list.
@@ -39,7 +41,7 @@ There is a word that you need to guess. You will only know the length of that wo
 You need to guess the word by inputting a letter each time.
 If the letter you inputted is contained in the word, then you will know the position(s) of that letter in the word.
 If the letter you guessed is not contained, then you will be informed that you made an incorrect guess and the hangman
-will lose one live. After the sixth incorrect attempts, the hangman will lose all its lives and the game is lost. If you 
+will lose one live. After the seventh incorrect attempts, the hangman will lose all its lives and the game is lost. If you 
 guessed the entire word before the hangman lost all his lives, you win the game.
 
 # Hardware Requirement
