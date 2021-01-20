@@ -71,7 +71,7 @@ def hidetheword(word, guessedlett):
     guessedlet = [' '] # A list of letters the user guessed
     guessedlet.extend(guessedlett)
     for i in word:
-        if i in guessedlet :
+        if i in guessedlet:
             lisOfWords.append(i)
         else :
             lisOfWords.append('_')
@@ -128,8 +128,11 @@ elif userOS == '2':
 else:
     clear = lambda: os.system('cls')
     print('Your OS is Linux.')
-time.sleep(2)
+time.sleep(1)
 clear()
+
+
+# Select game mode
 print('What mode are you choosing?')
 print('1. Single-player')
 print('2. Two-player')
@@ -155,8 +158,8 @@ while True:
 
 
     # Set up variables 
-    strWord = (wordlist.words) 
-    listWord = strWord.split('\n') # A list of possible words 
+    strWord = (wordlist.words) #Import the word list
+    listWord = strWord.split('\n') # Convert word list from string to list 
     lisGuessed = [] # The current letter the user guessed 
     lisLetter = [] # The list of letters the user guessed
     intLives = 0 # Lives of hangman
@@ -193,20 +196,19 @@ while True:
         strImp = input(color.strBlue + 'Input a letter you would guess: ')
         lisGuessed = [x for x in strImp]
 
-        # Counts wrong answers, outputs if the guess is correct,
+        # Checks and outputs if the guess is correct,
         # and updates hangman's lives
-        for i in lisGuessed: #check if is not enter
-            if i != '': # if not empty character 
-                for p in lisGuessed:
-                    if p not in lisLetter:  # not a character thats already been picked
-                        lisLetter.append(i)
-                        if strImp in strHideWord:
-                            print(color.strGreen + 'Correct guess!' + color.strGreen)
-                            time.sleep(1)
-                        else:
-                            print(color.strRed + 'Incorrect guess!' + color.strRed)
-                            time.sleep(1)
-                        intLives += sum([1 for o in lisGuessed if o not in strHideWord]) 
+        for i in lisGuessed: 
+            # if not empty character and not a character thats already been picked
+            if i != '' and i not in lisLetter: 
+                lisLetter.append(i)
+                if strImp in strHideWord:
+                    print(color.strGreen + 'Correct guess!' + color.strGreen)
+                    time.sleep(1)
+                else:
+                    print(color.strRed + 'Incorrect guess!' + color.strRed)
+                    time.sleep(1)
+                    intLives += 1
 
 
         # Clear the screen at the end of each guess.
