@@ -1,8 +1,9 @@
 # Author: Gary, Florian, Evan
 # File name: main.py
-# What it does: It is a hangman game that a single user can play. 
+# What it does: It is an online hangman game 
 # Date programmed: 2021-1-15 (start)
 # 2021-1-18 (rough work finished)
+# 2021-1-19 (final draft completed)
 
 import os
 import time
