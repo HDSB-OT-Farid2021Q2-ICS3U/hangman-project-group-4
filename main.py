@@ -127,7 +127,7 @@ elif userOS == '2':
     clear = lambda: os.system('clear')
     print('Your OS is Mac.')
 else:
-    clear = lambda: os.system('cls')
+    clear = lambda: os.system('clear')
     print('Your OS is Linux.')
 time.sleep(1)
 clear()
